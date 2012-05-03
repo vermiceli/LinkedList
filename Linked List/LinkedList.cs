@@ -12,30 +12,15 @@ namespace Michael.Collecition.LinkedList
     /// A linked list implementation
     /// </summary>
     /// <typeparam name="T">The type that the linked list is composed of</typeparam>
-    public class LinkedList<T> : IEnumerable // ICollection<T>
+    public class LinkedList<T> : IEnumerable
     {
-        /// <summary>
-        /// The head (first element) of the list.
-        /// </summary>
-        private Node<T> head;
-
-        /// <summary>
-        /// The tail (end element) of the list.
-        /// </summary>
-        private Node<T> tail;
-
-        /// <summary>
-        /// The number of elements in the list
-        /// </summary>
-        private int count;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="LinkedList{T}"/> class.
         /// </summary>
         public LinkedList()
         {
-            this.head = null;
-            this.count = 0;
+            this.Head = null;
+            this.Count = 0;
         }
 
         /// <summary>
@@ -60,26 +45,22 @@ namespace Michael.Collecition.LinkedList
         }
 
         /// <summary>
-        /// Gets the number of elements in the list
+        /// Gets or sets the number of elements in the list
+        /// Exposing set so that I can do some programming exercises, usually I wouldn't expose these to the client
         /// </summary>
-        public int Count
-        {
-            get
-            {
-                return this.count;
-            }
-        }
+        public int Count { get; set; }
 
         /// <summary>
-        /// Gets the head (first element) of the list.  Internal so that <see cref="LinkedListForwardEnumerator"/> can access.
+        /// Gets or sets the head (first element) of the list.  Internal so that <see cref="LinkedListForwardEnumerator"/> can access.
+        /// Exposing set so that I can do some programming exercises, usually I wouldn't expose these to the client
         /// </summary>
-        internal Node<T> Head
-        {
-            get
-            {
-                return this.head;
-            }
-        }
+        public Node<T> Head { get; set; }
+
+        /// <summary>
+        /// Gets or sets the tail (end element) of the list.  Internal so that <see cref="LinkedListForwardEnumerator"/> can access.
+        /// Exposing set so that I can do some programming exercises, usually I wouldn't expose these to the client
+        /// </summary>
+        public Node<T> Tail { get; set; }
 
         /// <summary>
         /// Adds an element to the list
@@ -90,16 +71,16 @@ namespace Michael.Collecition.LinkedList
             // We have an empty list
             if (this.Count == 0)
             {
-                this.head = new Node<T>(node);
-                this.tail = this.head;
-                this.count = 1;
+                this.Head = new Node<T>(node);
+                this.Tail = this.Head;
+                this.Count = 1;
             }
             else
             {
-                this.tail.Next = new Node<T>(node);
-                this.tail.Next.Previous = this.tail;
-                this.tail = this.tail.Next;
-                this.count++;
+                this.Tail.Next = new Node<T>(node);
+                this.Tail.Next.Previous = this.Tail;
+                this.Tail = this.Tail.Next;
+                this.Count++;
             }
         }
 

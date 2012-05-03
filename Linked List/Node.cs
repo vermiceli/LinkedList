@@ -45,11 +45,20 @@ namespace Michael.Collecition.LinkedList
         /// <summary>
         /// Gets or sets a next pointer
         /// </summary>
-        internal Node<T> Next { get; set; }
+        public Node<T> Next { get; set; }
 
         /// <summary>
         /// Gets or sets a previous pointer
         /// </summary>
-        internal Node<T> Previous { get; set; }
+        public Node<T> Previous { get; set; }
+
+        /// <summary>
+        /// A simple toString method that calls {T}'s toString method
+        /// </summary>
+        /// <returns>A string representation of the data</returns>
+        public override string ToString()
+        {
+            return this.Data.ToString();
+        }
     }
 }
